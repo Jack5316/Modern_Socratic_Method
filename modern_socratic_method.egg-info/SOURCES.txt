@@ -1,0 +1,9 @@
+README.md
+setup.py
+modern_socratic_method.egg-info/PKG-INFO
+modern_socratic_method.egg-info/SOURCES.txt
+modern_socratic_method.egg-info/dependency_links.txt
+modern_socratic_method.egg-info/entry_points.txt
+modern_socratic_method.egg-info/requires.txt
+modern_socratic_method.egg-info/top_level.txt
+tests/test_socratic_cli.py

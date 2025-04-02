@@ -1,0 +1,184 @@
+Metadata-Version: 2.2
+Name: modern-socratic-method
+Version: 0.1.0
+Summary: A CLI for Modern Socratic Method dialogues with AI
+Author: Claude Code
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: anthropic>=0.18.0
+Requires-Dist: requests>=2.31.0
+Requires-Dist: rich>=13.7.0
+Dynamic: author
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# Modern Socratic Method CLI
+
+A terminal-based application that lets you engage in Socratic dialogue with AI, in the style of the ancient Greek philosopher.
+
+![Socratic Method Demo](https://github.com/yourusername/modern-socratic-method/raw/main/docs/demo.gif)
+
+## Overview
+
+The Modern Socratic Method CLI brings the questioning technique of Socrates to your terminal. Instead of providing direct answers, the AI will use thoughtful questions to help you explore topics deeply and discover insights through your own reasoning.
+
+## Features
+
+- Engage in philosophical discussions with AI playing as Socrates
+- Rich terminal interface with markdown support
+- Support for multiple AI backends:
+  - Claude Desktop (default)
+  - DeepSeek API
+- Customizable conversation topics
+- Adjustable AI temperature for varied response styles
+
+## Installation
+
+### Prerequisites
+
+- Python 3.8 or higher
+- pip (Python package installer)
+
+### Quick Install
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/modern-socratic-method.git
+cd modern-socratic-method
+
+# Run the installation script
+./install.sh
+```
+
+### Manual Installation
+
+```bash
+# Install required packages
+pip install -r requirements.txt
+
+# Make the script executable
+chmod +x src/socratic_cli.py
+
+# Install as a package (optional)
+pip install -e .
+```
+
+## Usage
+
+### Basic Usage
+
+```bash
+# Start a dialogue (uses Claude Desktop by default)
+python src/socratic_cli.py
+
+# Or if installed as a package:
+socratic
+```
+
+### With Options
+
+```bash
+# Start with a specific topic
+python src/socratic_cli.py --topic "What is justice?"
+
+# Use DeepSeek API
+python src/socratic_cli.py --model deepseek --api-key "your-api-key"
+
+# Adjust AI temperature (0.0-1.0)
+python src/socratic_cli.py --temperature 0.8
+```
+
+### Command Line Options
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--model` | AI model to use (claude, deepseek) | claude |
+| `--api-key` | API key for the selected model | None |
+| `--topic` | Initial topic to discuss | None |
+| `--temperature` | Temperature for response generation (0.0-1.0) | 0.7 |
+
+### Environment Variables
+
+For DeepSeek API, you can set your API key as an environment variable:
+```bash
+export DEEPSEEK_API_KEY="your-api-key-here"
+```
+
+## Example Dialogue
+
+```
+Welcome to the Modern Socratic Method
+Type 'exit' or 'quit' to end the conversation.
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Socrates                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ What topic interests you       │
+│ today? What would you like to  │
+│ explore through our dialogue?  │
+└────────────────────────────────┘
+
+Your response: What is knowledge?
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ You                            ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ What is knowledge?             │
+└────────────────────────────────┘
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Socrates                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ An interesting question. But   │
+│ before we attempt to define    │
+│ knowledge, might I ask what    │
+│ you think distinguishes        │
+│ knowledge from mere belief?    │
+└────────────────────────────────┘
+```
+
+## Customization
+
+### Changing the System Prompt
+
+To customize the Socratic style, you can modify the system prompt in `src/socratic_cli.py`:
+
+```python
+self.history = [
+    {"role": "system", "content": """You are Socrates, the ancient Greek philosopher...
+    # Modify this prompt to change the AI's style and approach
+    """}
+]
+```
+
+## Running Tests
+
+```bash
+python -m unittest discover -s tests
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT
+
+## Acknowledgments
+
+- Socrates, for the original method
+- Rich library for the terminal interface
+- Anthropic's Claude and DeepSeek for the AI capabilities
